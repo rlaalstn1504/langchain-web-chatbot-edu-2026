@@ -1,0 +1,9 @@
+*.zip
+temp.ipynb
+.env
+/private
+/.vscode
+*.faiss
+*.pkl
+/.vscode
+/.ipynb_checkpoints
