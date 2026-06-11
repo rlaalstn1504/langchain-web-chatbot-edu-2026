@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+<title id="title">RAG 처리 흐름</title>
+<desc id="desc">문서를 청크로 나누고 임베딩해 벡터 DB에 저장한 뒤, 사용자 질문과 관련 조각을 함께 LLM에 전달해 최종 답변을 만드는 흐름도</desc>
+<defs>
+  <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+    <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#CBD5E1" flood-opacity="0.28"/>
+  </filter>
+  <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#CBD5E1"/>
+  </marker>
+  <style>
+    text { font-family: 'Noto Sans CJK KR', 'Noto Sans KR', 'Pretendard', sans-serif; dominant-baseline: alphabetic; }
+    .panel { filter: url(#shadow); }
+  </style>
+</defs>
+<rect width="1200" height="760" fill="#F7FAFC"/>
+<rect class="panel" x="34" y="34" width="1132" height="692" rx="26" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+
+<text x="72" y="95" font-size="34" font-weight="700" fill="#0F172A" text-anchor="start">RAG 처리 흐름</text>
+<text x="72" y="132" font-size="18" font-weight="400" fill="#64748B" text-anchor="start">문서를 찾아 질문과 함께 넣으면, LLM이 근거 기반으로 답합니다.</text>
+<rect x="893" y="72" width="248" height="42" rx="21" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>
+<text x="1017" y="99" font-size="17" font-weight="700" fill="#64748B" text-anchor="middle">Retrieval + Generation</text>
+<rect x="72" y="156" width="116" height="34" rx="17" fill="#ECFDF5" stroke="#0F766E" stroke-width="1"/>
+<text x="130" y="179" font-size="16" font-weight="700" fill="#0F766E" text-anchor="middle">사전 준비</text>
+<rect x="72" y="486" width="116" height="34" rx="17" fill="#EFF6FF" stroke="#2563EB" stroke-width="1"/>
+<text x="130" y="509" font-size="16" font-weight="700" fill="#2563EB" text-anchor="middle">질의 처리</text>
+<line x1="72" y1="348" x2="1128" y2="348" stroke="#E2E8F0"/>
+<line x1="244" y1="260" x2="282" y2="260" stroke="#CBD5E1" stroke-width="2.4" stroke-linecap="round" marker-end="url(#arrow)"/>
+<line x1="454" y1="260" x2="492" y2="260" stroke="#CBD5E1" stroke-width="2.4" stroke-linecap="round" marker-end="url(#arrow)"/>
+<line x1="578" y1="316" x2="620" y2="334" stroke="#CBD5E1" stroke-width="2.4" stroke-linecap="round" marker-end="url(#arrow)"/>
+<line x1="244" y1="590" x2="282" y2="590" stroke="#CBD5E1" stroke-width="2.4" stroke-linecap="round" marker-end="url(#arrow)"/>
+<line x1="454" y1="590" x2="536" y2="432" stroke="#CBD5E1" stroke-width="2.4" stroke-linecap="round" marker-end="url(#arrow)"/>
+<line x1="728" y1="382" x2="800" y2="260" stroke="#CBD5E1" stroke-width="2.4" stroke-linecap="round" marker-end="url(#arrow)"/>
+<line x1="895" y1="316" x2="895" y2="364" stroke="#CBD5E1" stroke-width="2.4" stroke-linecap="round" marker-end="url(#arrow)"/>
+<line x1="990" y1="420" x2="1018" y2="420" stroke="#CBD5E1" stroke-width="2.4" stroke-linecap="round" marker-end="url(#arrow)"/>
+<line x1="1085" y1="476" x2="1085" y2="534" stroke="#CBD5E1" stroke-width="2.4" stroke-linecap="round" marker-end="url(#arrow)"/>
+<rect x="72" y="204" width="172" height="112" rx="16" fill="#ECFDF5" stroke="#99F6E4" stroke-width="1.2"/>
+<circle cx="100" cy="232" r="15" fill="#0F766E"/>
+<text x="100" y="237" font-size="15" font-weight="700" fill="#FFFFFF" text-anchor="middle">1</text>
+<text x="158.0" y="269" font-size="22" font-weight="700" fill="#0F172A" text-anchor="middle">문서 수집</text>
+<text x="158.0" y="297" font-size="15" font-weight="400" fill="#64748B" text-anchor="middle">표준서·보고서·매뉴얼</text>
+<rect x="282" y="204" width="172" height="112" rx="16" fill="#ECFDF5" stroke="#99F6E4" stroke-width="1.2"/>
+<circle cx="310" cy="232" r="15" fill="#0F766E"/>
+<text x="310" y="237" font-size="15" font-weight="700" fill="#FFFFFF" text-anchor="middle">2</text>
+<text x="368.0" y="269" font-size="22" font-weight="700" fill="#0F172A" text-anchor="middle">청크 분할</text>
+<text x="368.0" y="297" font-size="15" font-weight="400" fill="#64748B" text-anchor="middle">의미 단위로 자르기</text>
+<rect x="492" y="204" width="172" height="112" rx="16" fill="#ECFDF5" stroke="#99F6E4" stroke-width="1.2"/>
+<circle cx="520" cy="232" r="15" fill="#0F766E"/>
+<text x="520" y="237" font-size="15" font-weight="700" fill="#FFFFFF" text-anchor="middle">3</text>
+<text x="578.0" y="269" font-size="22" font-weight="700" fill="#0F172A" text-anchor="middle">문서 임베딩</text>
+<text x="578.0" y="297" font-size="15" font-weight="400" fill="#64748B" text-anchor="middle">조각을 벡터로 변환</text>
+<rect x="72" y="534" width="172" height="112" rx="16" fill="#EFF6FF" stroke="#BFDBFE" stroke-width="1.2"/>
+<circle cx="100" cy="562" r="15" fill="#2563EB"/>
+<text x="100" y="567" font-size="15" font-weight="700" fill="#FFFFFF" text-anchor="middle">5</text>
+<text x="158.0" y="599" font-size="22" font-weight="700" fill="#0F172A" text-anchor="middle">사용자 질문</text>
+<text x="158.0" y="627" font-size="15" font-weight="400" fill="#64748B" text-anchor="middle">예: 예열 조건은?</text>
+<rect x="282" y="534" width="172" height="112" rx="16" fill="#EFF6FF" stroke="#BFDBFE" stroke-width="1.2"/>
+<circle cx="310" cy="562" r="15" fill="#2563EB"/>
+<text x="310" y="567" font-size="15" font-weight="700" fill="#FFFFFF" text-anchor="middle">6</text>
+<text x="368.0" y="599" font-size="22" font-weight="700" fill="#0F172A" text-anchor="middle">질문 임베딩</text>
+<text x="368.0" y="627" font-size="15" font-weight="400" fill="#64748B" text-anchor="middle">질문도 벡터로 변환</text>
+<rect x="800" y="204" width="190" height="112" rx="16" fill="#FFFBEB" stroke="#FDE68A" stroke-width="1.2"/>
+<circle cx="828" cy="232" r="15" fill="#D97706"/>
+<text x="828" y="237" font-size="15" font-weight="700" fill="#FFFFFF" text-anchor="middle">7</text>
+<text x="895.0" y="269" font-size="22" font-weight="700" fill="#0F172A" text-anchor="middle">관련 조각 검색</text>
+<text x="895.0" y="297" font-size="15" font-weight="400" fill="#64748B" text-anchor="middle">질문과 가까운 Top-k</text>
+<rect x="800" y="364" width="190" height="112" rx="16" fill="#FFFBEB" stroke="#FDE68A" stroke-width="1.2"/>
+<circle cx="828" cy="392" r="15" fill="#D97706"/>
+<text x="828" y="397" font-size="15" font-weight="700" fill="#FFFFFF" text-anchor="middle">8</text>
+<text x="895.0" y="429" font-size="22" font-weight="700" fill="#0F172A" text-anchor="middle">프롬프트 구성</text>
+<text x="895.0" y="457" font-size="15" font-weight="400" fill="#64748B" text-anchor="middle">질문 + 근거 문서</text>
+<rect x="1018" y="364" width="134" height="112" rx="16" fill="#FDF2F8" stroke="#FBCFE8" stroke-width="1.2"/>
+<circle cx="1046" cy="392" r="15" fill="#BE185D"/>
+<text x="1046" y="397" font-size="15" font-weight="700" fill="#FFFFFF" text-anchor="middle">9</text>
+<text x="1085.0" y="429" font-size="22" font-weight="700" fill="#0F172A" text-anchor="middle">LLM 생성</text>
+<text x="1085.0" y="457" font-size="15" font-weight="400" fill="#64748B" text-anchor="middle">문맥을 보고 답변</text>
+<rect x="1018" y="534" width="134" height="112" rx="16" fill="#FDF2F8" stroke="#FBCFE8" stroke-width="1.2"/>
+<circle cx="1046" cy="562" r="15" fill="#BE185D"/>
+<text x="1046" y="567" font-size="12" font-weight="700" fill="#FFFFFF" text-anchor="middle">10</text>
+<text x="1085.0" y="599" font-size="22" font-weight="700" fill="#0F172A" text-anchor="middle">최종 답변</text>
+<text x="1085.0" y="627" font-size="15" font-weight="400" fill="#64748B" text-anchor="middle">근거 기반 응답</text>
+<rect x="536" y="334" width="192" height="136" rx="20" fill="#F5F3FF" stroke="#C4B5FD" stroke-width="1.4"/>
+
+<ellipse cx="632.0" cy="366.0" rx="31.0" ry="9.0" fill="#FFFFFF" stroke="#7C3AED" stroke-width="3"/>
+<path d="M 601.0 366.0 V 393 A 31.0 9.0 0 0 0 663.0 393 V 366.0" fill="#FFFFFF" stroke="#7C3AED" stroke-width="3"/>
+<path d="M 601.0 384 A 31.0 9.0 0 0 0 663.0 384" fill="none" stroke="#7C3AED" stroke-width="3"/>
+
+<text x="632.0" y="435" font-size="24" font-weight="700" fill="#0F172A" text-anchor="middle">벡터 DB</text>
+<text x="632.0" y="462" font-size="15" font-weight="400" fill="#64748B" text-anchor="middle">임베딩된 조각 저장</text>
+<text x="641" y="512" font-size="15" font-weight="700" fill="#7C3AED" text-anchor="middle">유사도 비교</text>
+<text x="896" y="346" font-size="15" font-weight="700" fill="#D97706" text-anchor="middle">근거 선택</text>
+</svg>
